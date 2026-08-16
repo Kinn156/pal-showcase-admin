@@ -60,7 +60,6 @@ export function SiteHeader() {
             onClick={() => setOpen((value) => !value)}
             className="inline-flex size-9 items-center justify-center rounded-md border border-border text-foreground lg:hidden"
           >
-            {open ? <Menu className="size-4 hidden" /> : null}
             {open ? <X className="size-4" /> : <Menu className="size-4" />}
           </button>
         </div>
