@@ -164,3 +164,58 @@
     color: var(--color-foreground);
   }
 }
+
+@layer base {
+  html {
+    color-scheme: dark;
+  }
+
+  body {
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  ::selection {
+    background: color-mix(in oklab, var(--brand) 40%, transparent);
+  }
+}
+
+@utility text-gradient {
+  background: linear-gradient(
+    180deg,
+    var(--color-foreground) 20%,
+    color-mix(in oklab, var(--color-foreground) 45%, transparent) 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+@utility surface-card {
+  background-color: color-mix(in oklab, oklch(0.19 0.005 285) 55%, transparent);
+  border: 1px solid var(--color-border);
+  backdrop-filter: blur(14px);
+}
+
+@utility grid-lines {
+  background-image:
+    linear-gradient(to right, oklch(1 0 0 / 4%) 1px, transparent 1px),
+    linear-gradient(to bottom, oklch(1 0 0 / 4%) 1px, transparent 1px);
+  background-size: 56px 56px;
+}
+
+@utility glow-ring {
+  box-shadow: var(--shadow-float);
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    pointer-events: none;
+    background: radial-gradient(
+      120% 80% at 50% -20%,
+      color-mix(in oklab, var(--brand) 18%, transparent),
+      transparent 60%
+    );
+  }
+}
